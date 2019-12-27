@@ -119,9 +119,6 @@ BUNDLE_FILE="$DEST/main.jsbundle"
 
 
 # check and assign NODE_BINARY env
-eval "$(nvm alias default node)"
-
-NODE_BINARY="$(which node)"
 echo "$($NODE_BINARY --version)"
 
 "$NODE_BINARY" $NODE_ARGS "$CLI_PATH" $BUNDLE_COMMAND \
