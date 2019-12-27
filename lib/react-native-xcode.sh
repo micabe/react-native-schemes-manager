@@ -100,11 +100,6 @@ if [[ ! -x node && -d ${HOME}/.anyenv/bin ]]; then
   fi
 fi
 
-eval "$(nvm use)"
-
-# check and assign NODE_BINARY env
-[ -z "$NODE_BINARY" ] && export NODE_BINARY="$(which node)"
-
 # shellcheck source=/dev/null
 source "$REACT_NATIVE_DIR/scripts/node-binary.sh"
 
@@ -122,21 +117,14 @@ fi
 
 BUNDLE_FILE="$DEST/main.jsbundle"
 
-nodejs_not_found()	
-{	
-  echo "error: Can't find '$NODE_BINARY' binary to build React Native bundle" >&2	
-  echo "If you have non-standard nodejs installation, select your project in Xcode," >&2	
-  echo "find 'Build Phases' - 'Bundle React Native code and images'" >&2	
-  echo "and change NODE_BINARY to absolute path to your node executable" >&2	
-  echo "(you can find it by invoking 'which node' in the terminal)" >&2	
-  exit 2	
-}	
 
-type $NODE_BINARY >/dev/null 2>&1 || nodejs_not_found
+# check and assign NODE_BINARY env
+eval "$(nvm use)"
 
+NODE_BINARY="$(which node)"
 echo "$($NODE_BINARY --version)"
 
-$NODE_BINARY $NODE_ARGS "$CLI_PATH" $BUNDLE_COMMAND \
+"$NODE_BINARY" $NODE_ARGS "$CLI_PATH" $BUNDLE_COMMAND \
   $CONFIG_ARG \
   --entry-file "$ENTRY_FILE" \
   --platform ios \
