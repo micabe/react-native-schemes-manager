@@ -109,8 +109,10 @@ source "$REACT_NATIVE_DIR/scripts/node-binary.sh"
 
 [ -z "$BUNDLE_COMMAND" ] && BUNDLE_COMMAND="bundle"
 
+BUNDLE_CONFIG=""
+
 if [[ -z "$BUNDLE_CONFIG" ]]; then
-  CONFIG_ARG=""
+  CONFIG_ARG="--config $HOME/Dev/alambic/packages/mobile/metro.config.js"
 else
   CONFIG_ARG="--config $BUNDLE_CONFIG"
 fi
