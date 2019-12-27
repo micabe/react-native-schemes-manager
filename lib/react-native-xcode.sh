@@ -62,7 +62,7 @@ REACT_NATIVE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../react-native" && pw
 SCHEMES_MANAGER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # The project should be located next to where react-native is installed
 # in node_modules.
-PROJECT_ROOT=${PROJECT_ROOT:-"$REACT_NATIVE_DIR/../.."}
+PROJECT_ROOT="$HOME/Dev/alambic/packages/mobile"
 
 cd "$PROJECT_ROOT" || exit
 
@@ -112,7 +112,7 @@ source "$REACT_NATIVE_DIR/scripts/node-binary.sh"
 BUNDLE_CONFIG=""
 
 if [[ -z "$BUNDLE_CONFIG" ]]; then
-  CONFIG_ARG="--config $HOME/Dev/alambic/packages/mobile/metro.config.js"
+  CONFIG_ARG=""
 else
   CONFIG_ARG="--config $BUNDLE_CONFIG"
 fi
