@@ -100,6 +100,8 @@ if [[ ! -x node && -d ${HOME}/.anyenv/bin ]]; then
   fi
 fi
 
+eval "$(nvm use)"
+
 # check and assign NODE_BINARY env
 [ -z "$NODE_BINARY" ] && export NODE_BINARY="$(which node)"
 
